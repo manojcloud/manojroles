@@ -1,0 +1,15 @@
+---
+# tasks file for apache`
+  - name: install the latest version of Apache
+    yum:
+      name: httpd
+      state: present
+  - name: Start service httpd, if not started
+    service:
+      name: httpd
+      state: started
+  - name: Copy file with owner and permissions
+    copy:
+      src:  index.html
+      dest: /var/www/html/index.html
+      mode: '777'
